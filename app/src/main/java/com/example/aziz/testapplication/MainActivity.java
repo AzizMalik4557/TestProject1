@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                search_user = userSearch.getText().toString();
-                api_url = "https://api.github.com/users/"+search_user;
-                Log.i("url",api_url);
-                task = new DetailsGetTask(MainActivity.this, recyclerView);
-                task.execute(api_url);
+
+                    search_user = userSearch.getText().toString();
+                    api_url = "https://api.github.com/users/"+search_user;
+                    Log.i("url",api_url);
+                    task = new DetailsGetTask(MainActivity.this, recyclerView);
+                    task.execute(api_url);
+                    userSearch.setText("");
+
             }
         });
 
